@@ -2,37 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pokémon Card Video Component</title>
-    <link rel="stylesheet" href="viewer.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Twitch Extension API</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Bangers&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="pokeball-decoration"></div>
+    <div class="pokeball-decoration"></div>
+    <div class="pokeball-decoration"></div>
 
-    <div id="pokemon-card-extension">
-        <header class="card-header">
-            <h2 class="title">Current Pull</h2>
-            <button id="close-button" class="close-btn">&times;</button>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Pokémon Twitch Extension API</h1>
+            <p class="subtitle">Documentation for the Pokémon-themed Twitch Extension API</p>
         </header>
 
-        <div class="card-display-container">
-            <img id="active-card-image" 
-                 src="path/to/placeholder/card.png" 
-                 alt="Active Pokémon Card" 
-                 class="active-card">
+        <div id="connectionStatus" class="connection-status status-loading">
+            Connecting to API...
         </div>
 
-        <div class="card-info-panel">
-            <p>Set: <span id="card-set">Sword & Shield - Base Set</span></p>
-            <p>Rarity: <span id="card-rarity">Rare Holo</span></p>
+        <div id="statsBar" class="stats-bar">
+            <div class="stat-box">
+                <div class="stat-label">Total Cards</div>
+                <div class="stat-value" id="totalCards">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Rare Cards</div>
+                <div class="stat-value" id="rareCards">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Collections</div>
+                <div class="stat-value" id="collectionPercent">0%</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Last Updated</div>
+                <div class="stat-value" id="lastUpdated" style="font-size: 1rem;">--:--</div>
+            </div>
         </div>
-
-        <footer class="card-footer">
-            <button id="details-button" class="action-btn">See Attack Details</button>
-            <button id="claim-button" class="action-btn claim">Claim Card!</button>
+        <div id="cardShowcase" class="card-showcase">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 0.7rem; color: var(--primary-yellow);">
+                    Loading Pokemon Cards...
+                </p>
+            </div>
+        </div>
+        <footer class="footer">
+            <button class="action-button" id="refreshButton" disabled>
+                Refresh Cards
+            </button>
         </footer>
     </div>
 
-    <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
-
-    <script src="viewer.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
