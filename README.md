@@ -1,2 +1,2 @@
 # PokemonCardTwitch
-Twitch extension for viewers to see more details on a streamer's cards from a booster
+Twitch extension for viewers to see more details on a Pokemon Battle match during tournaments
