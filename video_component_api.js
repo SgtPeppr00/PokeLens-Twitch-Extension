@@ -130,68 +130,40 @@ function initOverlay() {
 function showPokemon(index) {
     const pokemon = samplePokemon[index];
 
-    const themeColor = typeColors[pokemon.type] || '#D4AF37';
-    document.documentElement.style.setProperty('--type-color', themeColor);
-    
-    // Update image and name
+    //Update image and name
     document.getElementById('overlayCardImage').src = pokemon.imageUrl;
     document.getElementById('overlayCardName').textContent = pokemon.name;
-    
+
     // Update type
-    const typeEl = document.getElementById('overlayType');
+    const typeEl = document.getElementById('overlayCardType');
     if (typeEl) {
         typeEl.innerHTML = `<span class="type-name">${pokemon.type}</span>`;
     }
 
-    // Update stats with bars and animation
-    updateStatWithBar('overlayStat1', 'bar1', pokemon.stats.hp, 255);
-    updateStatWithBar('overlayStat2', 'bar2', pokemon.stats.attack, 190);
-    updateStatWithBar('overlayStat3', 'bar3', pokemon.stats.defense, 250);
-    updateStatWithBar('overlayStat4', 'bar4', pokemon.stats.spAttack, 194);
-    updateStatWithBar('overlayStat5', 'bar5', pokemon.stats.spDefense, 250);
-    updateStatWithBar('overlayStat6', 'bar6', pokemon.stats.speed, 180);
-    
+    updateStatValue('overlayStat1', pokemon.stats.hp);
+    updateStatValue('overlayStat2', pokemon.stats.attack);
+    updateStatValue('overlayStat3', pokemon.stats.defense);
+    updateStatValue('overlayStat4', pokemon.stats.spAttack);
+    updateStatValue('overlayStat5', pokemon.stats.spDefense);
+    updateStatValue('overlayStat6', pokemon.stats.speed);
+
     // Update abilities
     const abilitiesEl = document.getElementById('overlayAbilities');
-    abilitiesEl.innerHTML = pokemon.abilities.map(ability => `
-        <div class="ability-item">
-            <span class="ability-name">${ability.name}</span>
-            <span class="ability-desc">${ability.description}</span>
-        </div>
-    `).join('');
-
-    // Animate in
-    const frame = document.querySelector('.overlay-frame');
-    if (frame) {
-        frame.style.animation = 'none';
-        setTimeout(() => {
-            frame.style.animation = 'overlayScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-        }, 10);
+    if (abilitiesEl) {
+        abilitiesEl.innerHTML = pokemon.abilities.map(ability => `
+            <div class="ability-item">
+                <span class="ability-name">${ability.name}</span>
+                <span class="ability-desc">${ability.description}</span>
+            </div>
+        `).join('');
     }
 }
 
-function updateStatWithBar(statId, barId, value, max) {
+function updateStatValue(statId, barId, value, max) {
     const textEl = document.getElementById(statId);
-    const barEl = document.getElementById(barId);
-    if (!textEl || !barEl) return;
-
-    const percentage = (value / max) * 100;
-
-    // Animate Number
-    let start = 0;
-    const duration = 1000; 
-    const startTime = performance.now();
-
-    function animate(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        textEl.textContent = Math.floor(progress * value);
-        if (progress < 1) requestAnimationFrame(animate);
+    if (textEl) {
+        textEl.textContent = value;
     }
-    requestAnimationFrame(animate);
-
-    if (barEl) barEl.style.width = `${percentage}%`;
-
 }
 
 function showTab(tabName) {
@@ -232,7 +204,7 @@ if (document.readyState === 'loading') {
 
 // Show instructions after 1 second
 setTimeout(() => {
-    console.log('%c🎮 Pokemon Card Overlay Demo', 'font-size: 20px; font-weight: bold; color: #FFCB05;');
+    console.log('%c Pokemon Card Overlay Demo', 'font-size: 20px; font-weight: bold; color: #FFCB05;');
     console.log('%c→ Click anywhere to see next Pokemon', 'font-size: 14px; color: #D4AF37;');
     console.log('%c← Use arrow keys to navigate', 'font-size: 14px; color: #D4AF37;');
     console.log('%c✕ Click X button for next card', 'font-size: 14px; color: #D4AF37;');
