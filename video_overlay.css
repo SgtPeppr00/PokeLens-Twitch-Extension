@@ -13,6 +13,11 @@
 }
 
 body {
+    background-image: url('TCGBoard.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
     font-family: 'Cinzel', serif;
     background: linear-gradient(135deg, #0E3A5F 0%, #1A1A2E 50%, #2A75BB 100%);
     min-height: 100vh;

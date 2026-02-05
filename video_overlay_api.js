@@ -146,6 +146,15 @@ const typeColors = {
 
 // Initialize overlay
 function initOverlay() {
+    const hitboxLayer = document.createElement('div');
+    hitboxLayer.id = 'videoHitboxLayer';
+    Object.assign(hitboxLayer.style, {
+        position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', 
+        zIndex: '500', pointerEvents: 'none'
+    })
+
+
+
     const closeBtn = document.getElementById('overlayClose');
     const overlay = document.getElementById('cardOverlay');
     const backdrop = document.querySelector('.overlay-backdrop');
@@ -204,11 +213,6 @@ function showPokemon(index) {
     }
 
     updateStatValue('overlayStat1', pokemon.stats.hp);
-    updateStatValue('overlayStat2', pokemon.stats.attack);
-    updateStatValue('overlayStat3', pokemon.stats.defense);
-    updateStatValue('overlayStat4', pokemon.stats.spAttack);
-    updateStatValue('overlayStat5', pokemon.stats.spDefense);
-    updateStatValue('overlayStat6', pokemon.stats.speed);
 }
 
 function updateStatValue(statId, value) {
@@ -257,8 +261,8 @@ function setLanguage(lang) {
 
     // Translate Stat Labels
     const labels = {
-        'en': ['HP', 'ATK', 'DEF', 'SP.ATK', 'SP. Def', 'SPD'],
-        'fr': ['PV', 'ATQ', 'DEF', 'ATK.SP', 'DEF.SP', 'VIT']
+        'en': ['HP'],
+        'fr': ['PV']
     }
 
     // Translate Type and Abilities Button
@@ -271,8 +275,6 @@ function setLanguage(lang) {
     if (tabAbilities) {
         tabAbilities.textContent = typeBtn[lang];
     }
-
-
 
     const labelElements = document.querySelectorAll('.stat-label');
     labelElements.forEach((el, idx) => {
@@ -296,4 +298,13 @@ setTimeout(() => {
     console.log('%c← Use arrow keys to navigate', 'font-size: 14px; color: #D4AF37;');
     console.log('%c✕ Click X button for next card', 'font-size: 14px; color: #D4AF37;');
 }, 1000);
+
+const mockScannerResults = [
+    { name: 'Pikachu', x: 42, y: 32, w: 16, h: 24}, // Active Spot
+    { name: 'Charizard', x: 12, y: 62, w: 14, h: 22}, // Bench 1
+    { name: 'Blastoise', x: 27, y: 62, w: 14, h: 22}, // Bench 2
+    { name: 'Mewtwo', x: 42, y: 62, w: 14, h: 22}, // Bench 3
+    { name: 'Venusaur', x: 57, y: 62, w: 14, h: 22}, // Bench 4
+    { name: 'Gengar', x: 72, y: 62, w: 14, h: 22}, // Bench 5
+]
 
