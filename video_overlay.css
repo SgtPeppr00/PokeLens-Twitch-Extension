@@ -23,9 +23,15 @@
 
 /* CRITICAL: Transparent body for Twitch overlay */
 body {
+<<<<<<< HEAD
     background: transparent !important;
     width: 100vw;
     height: 100vh;
+=======
+    background: transparent;
+    min-height: 100vh;
+    font-family: 'Cinzel', serif;
+>>>>>>> 77de7fa4dab9259aa40bc4894a4f0a6b30e37cf8
     overflow: hidden;
     pointer-events: none;
     font-family: var(--font-body);
@@ -42,7 +48,16 @@ body {
     width: 240px;
     pointer-events: all;
     display: flex;
+<<<<<<< HEAD
     align-items: center;
+=======
+    align-items: flex-start;
+    justify-content: flex-end;
+    z-index: 1000;
+    opacity: 1;
+    animation: fadeIn 0.3s ease-out;
+    pointer-events: none;
+>>>>>>> 77de7fa4dab9259aa40bc4894a4f0a6b30e37cf8
 }
 
 .panel-left  { left: 0; }
@@ -64,6 +79,7 @@ body {
     backdrop-filter: blur(14px);
 }
 
+<<<<<<< HEAD
 /* Left panel: rounded right corners, flush left */
 .panel-left .panel-inner {
     border-left: none;
@@ -88,6 +104,9 @@ body {
 .panel-left .panel-inner::before,
 .panel-right .panel-inner::before {
     content: '';
+=======
+.overlay-backdrop {
+>>>>>>> 77de7fa4dab9259aa40bc4894a4f0a6b30e37cf8
     position: absolute;
     top: 0;
     left: 0; right: 0;
@@ -171,6 +190,50 @@ body {
 .avatar {
     width: 100%;
     height: 100%;
+<<<<<<< HEAD
+=======
+    background: transparent;
+    pointer-events: none;
+}
+
+.overlay-frame {
+    position: relative;
+    background: rgba(26, 26, 46, 0.95);
+    border: 4px solid var(--frame-gold);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    overflow: hidden;
+    pointer-events: all;
+    margin: 20px 20px 0 0;
+}
+
+@keyframes overlayScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Close button */
+.overlay-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(139, 111, 71, 0.5);
+    border: 2px solid var(--frame-gold);
+    color: var(--frame-gold);
+    font-size: 2rem;
+    width: 45px;
+    height: 45px;
+>>>>>>> 77de7fa4dab9259aa40bc4894a4f0a6b30e37cf8
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid var(--gold);

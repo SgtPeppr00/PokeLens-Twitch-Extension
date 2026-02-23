@@ -3,12 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Pokemon TCG Tournament Overlay</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
     <link rel="stylesheet" href="video_overlay.css">
 </head>
 <body>
+=======
+    <title>PokeLens</title>
+    <!-- OBS Browser Source: enable transparent background in source settings -->
+    <style>
+        html { background: transparent !important; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="video_overlay.css?v=2">
+</head>
+<body>
+    <!-- Pokemon Card Overlay -->
+    <div id="cardOverlay" class="card-overlay" style="display: none;">
+        <div class="overlay-backdrop"></div>
+        <div class="overlay-frame">
+            <!-- Close button -->
+            <button class="overlay-close" id="overlayClose">&times;</button>
+>>>>>>> 77de7fa4dab9259aa40bc4894a4f0a6b30e37cf8
 
     <!-- PLAYER 1 — LEFT PANEL -->
     <div class="player-panel panel-left" id="panel-p1">
@@ -28,6 +46,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <!-- BENCH P1 -->
     <div class="bench-section bench-p1">
         <div class="bench-label">BENCH</div>
@@ -60,6 +79,9 @@
         </div>
     </div>
 
+=======
+    <script src="twitch-ext.min.js"></script>
+>>>>>>> 77de7fa4dab9259aa40bc4894a4f0a6b30e37cf8
     <script src="video_overlay.js"></script>
 </body>
 </html>
